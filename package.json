@@ -1,0 +1,57 @@
+{
+  "name": "omp-terminal-comonent",
+  "version": "0.0.1",
+  "description": "A react component that renders the likeness of a terminal, using an oh-my-posh config",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:example": "webpack serve --config example/webpack.config.js --mode development",
+    "build:example": "webpack --config example/webpack.config.js --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://todo"
+  },
+  "keywords": [
+    "react",
+    "omp",
+    "oh-my-posh",
+    "ohmyposh",
+    "terminal",
+    "custom",
+    "visual"
+  ],
+  "files": [
+    "*.md",
+    "src/**/*",
+    "tsconfig.json",
+    "scripts/*.ts",
+    "cache/schema.json",
+    "dist/**/*"
+  ],
+  "author": "rbleattler",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@rbleattler/omp-ts-typegen": "^0.2025.701617",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.31",
+    "@types/react-dom": "^18.2.14",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "react-dom": "^19.0.0",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

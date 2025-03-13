@@ -1,0 +1,254 @@
+.terminal {
+  width: 37.5rem;
+  height: 25rem;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+}
+
+/* Terminal Title */
+.terminal-title {
+  height: 2.25rem;
+  background-color: #323233;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  user-select: none;
+  position: relative;
+}
+
+/* Title text - centered regardless of OS */
+.title-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+}
+
+/* controls section */
+.terminal-controls {
+  display: flex;
+  align-items: center;
+  height: 2.25rem;
+}
+
+/* Position controls based on OS */
+.terminal-controls.macos {
+  justify-content: flex-start;
+  margin-right: auto; /* Push to left */
+}
+
+.terminal-controls.windows {
+  justify-content: flex-end;
+  margin-left: auto; /* Push to right */
+}
+
+.terminal-controls.linux {
+  justify-content: flex-end;
+  margin-left: auto; /* Push to right */
+}
+
+.terminal-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0.1875rem;
+}
+
+/* OS-specific control styling */
+.terminal-controls.windows .terminal-control {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.1875rem;
+  background-color: #606060;
+}
+
+.terminal-controls.macos .terminal-control {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.terminal-controls.linux .terminal-control {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.1875rem;
+  background-color: #606060;
+}
+
+/* macOS specific button colors */
+.terminal-controls.macos .terminal-close {
+  background-color: #FF5F56;
+}
+
+.terminal-controls.macos .terminal-minimize {
+  background-color: #FFBD2E;
+}
+
+.terminal-controls.macos .terminal-maximize {
+  background-color: #27C93F;
+}
+
+/* Hide icon for macOS */
+.terminal-controls.macos .terminal-control svg {
+  opacity: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+/* Show icon on hover for macOS */
+.terminal-controls.macos .terminal-control:hover svg {
+  opacity: 0.5;
+}
+
+/* OS toggle styling */
+.terminal-control.terminal-toggle {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0 0.375rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  background-color: transparent !important; /* Override the macOS background color */
+}
+
+.terminal-control.terminal-toggle:hover {
+  opacity: 1;
+}
+
+/* Make all toggle icons visible regardless of OS */
+.terminal-controls .terminal-control.terminal-toggle svg {
+  opacity: 0.7;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.terminal-controls .terminal-control.terminal-toggle:hover svg {
+  opacity: 1;
+}
+
+/* Override the macOS icon hiding for the toggle specifically */
+.terminal-controls.macos .terminal-control.terminal-toggle svg {
+  opacity: 0.7;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.terminal-controls.macos .terminal-control.terminal-toggle:hover svg {
+  opacity: 1;
+}
+
+/* Make Windows controls more visible */
+.terminal-controls.windows .terminal-control svg {
+  opacity: 0.8;
+}
+
+.terminal-controls.windows .terminal-control:hover svg {
+  opacity: 1;
+}
+
+/* Terminal blocks styling */
+.terminal-block {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.terminal-block-left {
+  justify-content: flex-start;
+}
+
+.terminal-block-right {
+  justify-content: flex-end;
+}
+
+.terminal-block-center {
+  justify-content: center;
+}
+
+.terminal-block-newline {
+  margin-top: 0.5rem;
+}
+
+.terminal-block-placeholder {
+  padding: 0.25rem;
+  background-color: rgba(100, 100, 100, 0.2);
+  border-radius: 0.25rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.terminal-body {
+  flex: 1;
+  padding: 0.75rem;
+  color: #ffffff;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Terminal prompt styling */
+.terminal-prompt {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.terminal-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* Terminal segments styling */
+.terminal-segment {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.125rem;
+}
+
+.terminal-segment-prefix,
+.terminal-segment-postfix {
+  opacity: 0.8;
+}
+
+.terminal-segment-content {
+  font-weight: 500;
+}
+
+/* Style variants */
+.terminal-segment-style-plain {
+  /* Default style */
+}
+
+.terminal-segment-style-diamond {
+  position: relative;
+  margin: 0 0.375rem;
+}
+
+.terminal-segment-style-powerline {
+  position: relative;
+}
+
+.terminal-segment-style-powerline::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 0.75rem solid transparent;
+  border-bottom: 0.75rem solid transparent;
+  border-left: 0.75rem solid;
+  border-left-color: inherit;
+  position: absolute;
+  right: -0.75rem;
+  top: 0;
+}
