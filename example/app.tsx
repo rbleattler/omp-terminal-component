@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Terminal from '../src/components/Terminal';
+import Terminal from '../src/Terminal';
 import Prompt from '../src/components/prompt';
 import * as omp from '@rbleattler/omp-ts-typegen';
 
@@ -118,8 +118,6 @@ const App = () => {
         "segments": [
           {
             "properties": {
-              "postfix": "",
-              "prefix": "",
               "text": "\u256d\u2500"
             },
             "type": "text",
@@ -128,7 +126,7 @@ const App = () => {
           {
             "properties": {
               "postfix": "\u232a",
-              "prefix": "\uf489",
+              "prefix": "\uf017",
               "time_format": " 15:04:05 "
             },
             "type": "time",

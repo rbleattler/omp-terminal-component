@@ -3,6 +3,7 @@
 ## Overview
 
 The OMP Terminal Component needs to display Oh-My-Posh prompts in a React component. However, Oh-My-Posh normally relies on real system data like:
+
 - Environment variables
 - Git repository information
 - System metrics (CPU, memory)
@@ -11,6 +12,7 @@ The OMP Terminal Component needs to display Oh-My-Posh prompts in a React compon
 - Current time
 
 To properly render these elements in a static or demo environment, we need a mocking system that can:
+
 1. Provide realistic mock values for all data points Oh-My-Posh expects
 2. Process Oh-My-Posh templates (like `{{ .Env.HOME }}`)
 3. Handle segment-specific rendering needs
@@ -28,22 +30,28 @@ The mocking system consists of several key components:
 
 ### Component Relationships
 
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │     │                 │
-│   Mock Data     │────▶│   Segment       │────▶│   Segment       │
-│   Provider      │     │   Processor     │     │   Renderer      │
-│                 │     │                 │     │                 │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-         │                      │
-         │                      │
-         ▼                      ▼
-┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │
-│   Template      │◀────│   Mock Data     │
-│   Resolver      │     │   Interface     │
-│                 │     │                 │
-└─────────────────┘     └─────────────────┘
+```mermaid
+%%{init: { "theme": "neutral" }}%%
+
+C4Component
+  title Component Relationships
+
+
+  Container_Boundary(mock, "Mock System") {
+    Component(mi, "Mock Data Interface", "TypeScript", "Defines mockable data structure")
+    Component(mp, "Mock Data Provider", "React Context", "Provides mock data throughout component tree")
+    Component(sp, "Segment Processor", "Class", "Handles segment-specific logic")
+    Component(tr, "Template Resolver", "Class", "Parses and evaluates templates")
+  }
+  Container_Boundary(render, "Rendering") {
+    Component(sr, "Segment Renderer", "React Component", "Renders segments with mock data")
+  }
+
+  Rel(mp, sp, "Provides data")
+  Rel(mp, tr, "Provides data")
+  Rel(sp, tr, "Uses")
+  Rel(tr, mi, "Implements")
+  Rel(sp, sr, "Processes segments for")
 ```
 
 ## Implementation Details
@@ -121,6 +129,7 @@ export const defaultMockData: MockData = {
 ### 3. Template Resolver
 
 The template resolver handles Oh-My-Posh template expressions like:
+
 - Simple variables: `{{ .Env.HOME }}`
 - Functions: `{{ round .PhysicalPercentUsed .Precision }}`
 - Conditionals: `{{ if .Working.Changed }}modified{{ end }}`
@@ -339,3 +348,12 @@ The mock system can be extended in several ways:
 5. Update the segment renderer to use the mock system
 6. Document the system and provide examples
 7. Add extension points for additional segment types
+
+## Nerd Font Renderer
+
+Since we can't solely rely on webfonts (woff2) to render the icons, we need to implement a fallback mechanism to render the icons in the terminal. The Nerd Font Renderer will:
+
+1. Use `https://www.nerdfonts.com/assets/css/combo.css` to load the Nerd Font icons
+1. Identify the use of unicode icons in the segment
+1. Replace the unicode icons with the corresponding Nerd Font icon in the form of a text span
+1. Style the text span to match the Nerd Font icon

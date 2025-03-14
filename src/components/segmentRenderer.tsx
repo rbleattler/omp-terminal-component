@@ -1,4 +1,5 @@
 import { Segment } from '@rbleattler/omp-ts-typegen';
+import { useMock } from '../mocks/mockProvider';
 
 /**
  * Renders segments from an Oh-My-Posh block.
@@ -9,11 +10,15 @@ import { Segment } from '@rbleattler/omp-ts-typegen';
 
 
 export function renderSegments(segments: Segment[] | undefined) {
+  // const { segmentProcessor } = useMock(); //TODO: Investigate
+
   if (!segments || segments.length === 0) {
     return null;
   }
 
   return segments.map((segment, index) => {
+    // const processedSegment = segmentProcessor.processSegment(segment);
+
     // Determine styling based on segment properties
     const segmentStyle = {
       color: segment.foreground || 'inherit',
@@ -55,7 +60,7 @@ function getSegmentText(segment: Segment): string {
   if (segment.type === 'text' && segment.properties?.text) {
     return segment.properties.text;
   }
-  
+
   // Placeholder for other segment types
   // If no other logic works, then return the following
   return segment.properties?.text || `[${segment.type || 'unknown'}]`;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import TerminalProps from './terminalProps';
+import TerminalProps from './components/terminalProps';
 import './css/terminal.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize, faWindowMaximize, faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { faWindows, faApple } from '@fortawesome/free-brands-svg-icons';
-import Prompt from './prompt';
-import { Block } from '@rbleattler/omp-ts-typegen';
+// import Prompt from './components/prompt';
+// import { Block } from '@rbleattler/omp-ts-typegen';
 
 function controlButtons(os: string, toggleOs: (e: React.MouseEvent) => void) {
 	// Change the order depending on the OS
@@ -106,8 +106,8 @@ class Terminal extends Component<TerminalProps> {
 				</div>
 				<div className="terminal-body">
 					<div className="terminal-content">
-						{/* Directly render the prompt component's output */}
-						{/* {this.props.prompt.render()} */}
+						{/* Directly render the prompt component's output */ }
+						{ this.props.prompt.render() }
 					</div>
 				</div>
 			</div>

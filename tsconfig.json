@@ -4,8 +4,11 @@
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     // Type checking and strictness
     "strict": true,
     "noImplicitAny": true,
@@ -18,29 +21,42 @@
     "alwaysStrict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-
     // Module resolution and output
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-
     // Output configuration
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist",
     "jsx": "react-jsx",
-
     // Advanced options
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "useDefineForClassFields": true,
     "removeComments": false,
-
+    // Add these settings
+    "types": [
+      "jest",
+      "node",
+      "@testing-library/jest-dom"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./test/types"
+    ],
     // Project structure
     // "rootDir": "./src"
   },
-  "include": ["src/**/*", "example/**/*"],
+  "include": [
+    "src/**/*",
+    "example/**/*",
+    "test/**/*",
+    "test/setupTests.ts",
+    "jest.config.js",
+    "test/types/jest-dom.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "**/node_modules/*"
