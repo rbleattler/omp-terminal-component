@@ -1,5 +1,5 @@
 // src/mocks/defaultData.ts
-import { MockData } from './types';
+import { MockData } from "./MockData";
 
 export const defaultMockData: MockData = {
   env: {
@@ -31,8 +31,19 @@ export const defaultMockData: MockData = {
   },
   shell: { name: 'bash' },
   path: {
-    currentDir: '/home/user/projects/my-project',
-    homeDir: '/home/user',
+    pwd: '/home/user/projects/my-project',
+    Path: '/home/user/projects/my-project',
+    Folders: [],
+    root: '',
+    relative: 'my-project',
+    Location: '/home/user/projects/my-project',
+    pathSeparator: '/',
+    cygPath: false,
+    windowsPath: false,
+    mappedLocations: {},
+    StackCount: 0,
+    RootDir: false,
+    Writable: true
   },
   time: { now: new Date() },
 };

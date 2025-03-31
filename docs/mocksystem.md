@@ -59,7 +59,7 @@ C4Component
 ### 1. Mock Data Interface
 
 ```typescript
-// src/mocks/types.ts
+// src/mocks/MockData.ts
 export interface MockData {
   env: Record<string, string>;
   git: {

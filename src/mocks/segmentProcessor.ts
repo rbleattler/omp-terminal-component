@@ -1,6 +1,6 @@
 // src/mocks/segmentProcessor.ts
 import { Segment } from '@rbleattler/omp-ts-typegen';
-import { MockData } from './types';
+import { MockData } from "./MockData";
 import { TemplateResolver } from './templateResolver';
 
 export class SegmentProcessor {

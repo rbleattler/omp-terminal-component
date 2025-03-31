@@ -1,6 +1,6 @@
 // src/mocks/mockProvider.tsx
 import React, { createContext, useContext, ReactNode } from 'react';
-import { MockData } from './types';
+import { MockData } from "./MockData";
 import { defaultMockData } from './defaultData';
 import { SegmentProcessor } from './segmentProcessor';
 

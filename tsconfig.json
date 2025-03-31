@@ -39,8 +39,7 @@
     // Add these settings
     "types": [
       "jest",
-      "node",
-      "@testing-library/jest-dom"
+      "node"
     ],
     "typeRoots": [
       "./node_modules/@types",

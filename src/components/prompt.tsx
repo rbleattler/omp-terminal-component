@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, JSX } from 'react';
 import CursorType from './cursorType';
 import type { Config } from '@rbleattler/omp-ts-typegen';
 import renderBlocks from './blockRenderer';

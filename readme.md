@@ -1,1 +1,3 @@
-omp-terminal-component
+# oh-my-posh Terminal React Component
+
+
