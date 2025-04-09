@@ -55,7 +55,7 @@
     "test/setupTests.ts",
     "jest.config.js",
     "test/types/jest-dom.d.ts"
-  ],
+, ".scratch/MockData.ts"  ],
   "exclude": [
     "node_modules",
     "**/node_modules/*"

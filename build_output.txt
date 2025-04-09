@@ -1,0 +1,102 @@
+
+> omp-terminal-comonent@0.0.1 build
+> npm run generate:segments && tsc
+
+
+> omp-terminal-comonent@0.0.1 generate:segments
+> ts-node scripts/generateSegmentCode.ts
+
+Starting Oh My Posh segment code generation...
+Fetching Oh My Posh source code from https://github.com/JanDeDobbeleer/oh-my-posh.git...
+Removing existing source in D:\Repos\omp-terminal-react-component\.cache\omp-source...
+Cloning Oh My Posh repository from https://github.com/JanDeDobbeleer/oh-my-posh.git...
+Parsing golang segment files...
+Found 0 segment implementations
+Generating TypeScript segment handlers...
+Type definitions already exist. Skipping.
+Creating segment handler registry...
+Generated segment handler registry with 0 handlers
+Code generation complete!
+example/app.tsx(275,21): error TS2322: Type '{ git: { branch: string; isGitRepo: boolean; status: { working: { changed: boolean; string: string; }; staging: { changed: boolean; string: string; }; }; stashCount: number; }; path: { pwd: string; Location: string; }; env: { ...; }; time: { ...; }; system: { ...; }; }' is not assignable to type 'Partial<MockData>'.
+  Types of property 'path' are incompatible.
+    Type '{ pwd: string; Location: string; }' is missing the following properties from type 'PathMock': currentDir, homeDir
+src/mocks/defaultData.ts(18,7): error TS2353: Object literal may only specify known properties, and 'ahead' does not exist in type '{ working: { changed: boolean; string: string; }; staging: { changed: boolean; string: string; }; }'.
+src/mocks/defaultData.ts(34,5): error TS2353: Object literal may only specify known properties, and 'pwd' does not exist in type 'PathMock'.
+src/segments/custom/gitHandler.ts(56,7): error TS18048: 'processedSegment.properties' is possibly 'undefined'.
+src/segments/custom/gitHandler.ts(71,21): error TS18048: 'processedSegment.properties' is possibly 'undefined'.
+src/segments/custom/gitHandler.ts(82,21): error TS18048: 'processedSegment.properties' is possibly 'undefined'.
+test/components/segmentRenderer.test.tsx(61,12): error TS2532: Object is possibly 'undefined'.
+test/components/segmentRenderer.test.tsx(72,25): error TS2345: Argument of type '{ type: string; style: string; foreground: string; background: string; properties: { prefix: string; postfix: string; }; }[]' is not assignable to parameter of type 'Segment[]'.
+  Type '{ type: string; style: string; foreground: string; background: string; properties: { prefix: string; postfix: string; }; }' is not assignable to type 'Segment'.
+    Types of property 'type' are incompatible.
+      Type 'string' is not assignable to type 'SegmentType'.
+test/components/segmentRenderer.test.tsx(107,25): error TS2345: Argument of type '{ type: string; style: string; visible: boolean; }[]' is not assignable to parameter of type 'Segment[]'.
+  Type '{ type: string; style: string; visible: boolean; }' is not assignable to type 'Segment'.
+    Types of property 'type' are incompatible.
+      Type 'string' is not assignable to type 'SegmentType'.
+test/components/segmentRenderer.test.tsx(148,25): error TS2345: Argument of type '{ type: string; style: string; foreground: string; background: string; properties: { text: string; }; }[]' is not assignable to parameter of type 'Segment[]'.
+  Type '{ type: string; style: string; foreground: string; background: string; properties: { text: string; }; }' is not assignable to type 'Segment'.
+    Types of property 'type' are incompatible.
+      Type 'string' is not assignable to type 'SegmentType'.
+test/scripts/utils/codeGenerator.test.ts(18,43): error TS2345: Argument of type 'false' is not assignable to parameter of type 'never'.
+test/scripts/utils/codeGenerator.test.ts(20,42): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'never'.
+test/scripts/utils/codeGenerator.test.ts(22,42): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'never'.
+test/scripts/utils/codeGenerator.test.ts(75,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/codeGenerator.test.ts(78,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/codeGenerator.test.ts(81,30): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/codeGenerator.test.ts(92,45): error TS2345: Argument of type 'true' is not assignable to parameter of type 'never'.
+test/scripts/utils/codeGenerator.test.ts(120,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/codeGenerator.test.ts(189,22): error TS2552: Cannot find name 'someFunction'. Did you mean 'Function'?
+test/scripts/utils/codeGenerator.test.ts(194,22): error TS2552: Cannot find name 'someFunction'. Did you mean 'Function'?
+test/scripts/utils/golangParser.test.ts(60,47): error TS2345: Argument of type 'any' is not assignable to parameter of type 'never'.
+test/scripts/utils/golangParser.test.ts(78,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(79,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(82,30): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(88,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(89,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(89,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(90,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(90,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(93,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(94,28): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/golangParser.test.ts(111,47): error TS2345: Argument of type 'any' is not assignable to parameter of type 'never'.
+test/scripts/utils/golangParser.test.ts(133,47): error TS2345: Argument of type 'Error' is not assignable to parameter of type 'never'.
+test/scripts/utils/golangParser.test.ts(166,39): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'string'.
+test/scripts/utils/registryGenerator.test.ts(17,42): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'never'.
+test/scripts/utils/registryGenerator.test.ts(44,14): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/registryGenerator.test.ts(47,31): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/registryGenerator.test.ts(80,31): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/registryGenerator.test.ts(107,31): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/registryGenerator.test.ts(118,22): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/registryGenerator.test.ts(123,22): error TS2532: Object is possibly 'undefined'.
+test/scripts/utils/sourceDownloader.test.ts(21,43): error TS2345: Argument of type 'false' is not assignable to parameter of type 'never'.
+test/scripts/utils/sourceDownloader.test.ts(24,42): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'never'.
+test/scripts/utils/sourceDownloader.test.ts(27,39): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'never'.
+test/scripts/utils/sourceDownloader.test.ts(30,35): error TS2345: Argument of type '(command: string, callback: ExecOptions | ({ encoding: "buffer" | null; } & ExecOptions) | ((error: ExecException | null, stdout: string, stderr: string) => void) | ... 4 more ... | undefined) => any' is not assignable to parameter of type 'typeof exec'.
+  Property '__promisify__' is missing in type '(command: string, callback: ExecOptions | ({ encoding: "buffer" | null; } & ExecOptions) | ((error: ExecException | null, stdout: string, stderr: string) => void) | ... 4 more ... | undefined) => any' but required in type 'typeof exec'.
+test/scripts/utils/sourceDownloader.test.ts(31,21): error TS2349: This expression is not callable.
+  Not all constituents of type 'ExecOptions | ({ encoding: "buffer" | null; } & ExecOptions) | ((error: ExecException | null, stdout: string, stderr: string) => void) | ({ ...; } & ExecOptions) | ({ ...; } & ExecOptions) | (ObjectEncodingOptions & ExecOptions)' are callable.
+    Type 'ExecOptions' has no call signatures.
+test/scripts/utils/sourceDownloader.test.ts(58,45): error TS2345: Argument of type 'true' is not assignable to parameter of type 'never'.
+test/scripts/utils/sourceDownloader.test.ts(74,45): error TS2345: Argument of type 'true' is not assignable to parameter of type 'never'.
+test/scripts/utils/sourceDownloader.test.ts(118,37): error TS2345: Argument of type '(command: string, callback: ExecOptions | ({ encoding: "buffer" | null; } & ExecOptions) | ((error: ExecException | null, stdout: string, stderr: string) => void) | ... 4 more ... | undefined) => any' is not assignable to parameter of type 'typeof exec'.
+  Property '__promisify__' is missing in type '(command: string, callback: ExecOptions | ({ encoding: "buffer" | null; } & ExecOptions) | ((error: ExecException | null, stdout: string, stderr: string) => void) | ... 4 more ... | undefined) => any' but required in type 'typeof exec'.
+test/scripts/utils/sourceDownloader.test.ts(122,25): error TS2349: This expression is not callable.
+  Not all constituents of type 'ExecOptions | ({ encoding: "buffer" | null; } & ExecOptions) | ((error: ExecException | null, stdout: string, stderr: string) => void) | ({ ...; } & ExecOptions) | ({ ...; } & ExecOptions) | (ObjectEncodingOptions & ExecOptions)' are callable.
+    Type 'ExecOptions' has no call signatures.
+test/scripts/utils/sourceDownloader.test.ts(125,25): error TS2349: This expression is not callable.
+  Not all constituents of type 'ExecOptions | ({ encoding: "buffer" | null; } & ExecOptions) | ((error: ExecException | null, stdout: string, stderr: string) => void) | ({ ...; } & ExecOptions) | ({ ...; } & ExecOptions) | (ObjectEncodingOptions & ExecOptions)' are callable.
+    Type 'ExecOptions' has no call signatures.
+test/scripts/utils/sourceDownloader.test.ts(139,60): error TS2345: Argument of type 'true' is not assignable to parameter of type 'never'.
+test/scripts/utils/sourceDownloader.test.ts(144,59): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'never'.
+test/segments/custom/segmentProcessor.test.ts(6,34): error TS2307: Cannot find module '../../src/mocks/segmentProcessor' or its corresponding type declarations.
+test/segments/custom/segmentProcessor.test.ts(7,26): error TS2307: Cannot find module '../../src/mocks/mockData' or its corresponding type declarations.
+test/segments/custom/segmentProcessor.test.ts(20,11): error TS2698: Spread types may only be created from object types.
+test/segments/custom/segmentProcessor.test.ts(22,16): error TS18046: 'segment' is of type 'unknown'.
+test/segments/custom/segmentProcessor.test.ts(32,11): error TS2698: Spread types may only be created from object types.
+test/segments/custom/segmentProcessor.test.ts(34,16): error TS18046: 'segment' is of type 'unknown'.
+test/segments/custom/segmentProcessor.test.ts(47,11): error TS2698: Spread types may only be created from object types.
+test/segments/custom/segmentProcessor.test.ts(49,16): error TS18046: 'segment' is of type 'unknown'.
+test/segments/custom/segmentProcessor.test.ts(82,11): error TS2741: Property 'style' is missing in type '{ type: "path"; properties: {}; }' but required in type 'Segment'.
+test/segments/custom/segmentProcessor.test.ts(104,11): error TS2741: Property 'style' is missing in type '{ type: "git"; properties: {}; }' but required in type 'Segment'.
+test/segments/custom/segmentProcessor.test.ts(127,7): error TS2322: Type '"unknown"' is not assignable to type 'SegmentType'.

@@ -10,39 +10,45 @@ import { useMock } from '../mocks/mockProvider';
 
 
 export function renderSegments(segments: Segment[] | undefined) {
-  // const { segmentProcessor } = useMock(); //TODO: Investigate
+  const { segmentProcessor } = useMock();
 
   if (!segments || segments.length === 0) {
     return null;
   }
 
   return segments.map((segment, index) => {
-    // const processedSegment = segmentProcessor.processSegment(segment);
+    // Process the segment with the appropriate handler
+    const processedSegment = segmentProcessor.processSegment(segment);
+
+    // Skip rendering if the segment is not visible
+    if (processedSegment.visible === false) {
+      return null;
+    }
 
     // Determine styling based on segment properties
     const segmentStyle = {
-      color: segment.foreground || 'inherit',
-      backgroundColor: segment.background || 'transparent',
+      color: processedSegment.foreground || 'inherit',
+      backgroundColor: processedSegment.background || 'transparent',
     };
 
     // Combine classes
     const segmentClasses = [
       'terminal-segment',
-      `terminal-segment-type-${segment.type || 'default'}`,
-      segment.style ? `terminal-segment-style-${segment.style}` : '',
+      `terminal-segment-type-${processedSegment.type || 'default'}`,
+      processedSegment.style ? `terminal-segment-style-${processedSegment.style}` : '',
     ].filter(Boolean).join(' ');
 
     // Get text content for the segment
-    const textContent = getSegmentText(segment);
+    const textContent = processedSegment.properties?.text || getSegmentText(processedSegment);
 
     return (
       <span key={index} className={segmentClasses} style={segmentStyle}>
-        {segment.properties?.prefix && (
-          <span className="terminal-segment-prefix">{segment.properties.prefix}</span>
+        {processedSegment.properties?.prefix && (
+          <span className="terminal-segment-prefix">{processedSegment.properties.prefix}</span>
         )}
         <span className="terminal-segment-content">{textContent}</span>
-        {segment.properties?.postfix && (
-          <span className="terminal-segment-postfix">{segment.properties.postfix}</span>
+        {processedSegment.properties?.postfix && (
+          <span className="terminal-segment-postfix">{processedSegment.properties.postfix}</span>
         )}
       </span>
     );

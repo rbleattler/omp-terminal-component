@@ -1,0 +1,10 @@
+$segmentTypes = @( "angular", "argocd", "aurelia", "aws", "az", "azd", "azfunc", "battery", "bazel", "brewfather", "buf", "bun", "carbonintensity", "cds", "cf", "cftarget", "cmake", "command", "connection", "crystal", "dart", "deno", "docker", "dotnet", "elixir", "executiontime", "firebase", "flutter", "fortran", "fossil", "gcp", "git", "gitversion", "go", "haskell", "helm", "ipify", "java", "julia", "kotlin", "kubectl", "lastfm", "lua", "mercurial", "mojo", "mvn", "nbgv", "nightscout", "nim", "nix-shell", "node", "npm", "nx", "ocaml", "os", "owm", "path", "perl", "php", "plastic", "pnpm", "project", "pulumi", "python", "quasar", "r", "react", "root", "ruby", "rust", "sapling", "session", "shell", "sitecore", "spotify", "status", "strava", "svelte", "svn", "swift", "sysinfo", "talosctl", "tauri", "terraform", "text", "time", "ui5tooling", "umbraco", "unity", "upgrade", "v", "vala", "wakatime", "winreg", "withings", "xmake", "yarn", "ytm", "zig")
+
+$path = 'D:\Repos\omp-terminal-react-component\src\mocks\segments'
+
+$segmentTypes.ForEach({
+    $type = $_
+    $newPath = Join-Path $path "$type.tsx"
+    New-Item -Path $newPath -ItemType File -ErrorAction SilentlyContinue
+
+  })

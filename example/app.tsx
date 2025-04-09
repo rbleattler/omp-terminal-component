@@ -1,7 +1,8 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Terminal from '../src/Terminal';
 import Prompt from '../src/components/prompt';
+import SegmentExample from './segmentExample';
+import { MockProvider } from '../src/mocks/mockProvider';
 import * as omp from '@rbleattler/omp-ts-typegen';
 
 const App = () => {
@@ -181,15 +182,115 @@ const App = () => {
     config: sampleConfig,
     cursor: 0,
   });
+  // Sample custom mock data to demonstrate segment handling
+  const customMockData = {
+    git: {
+      branch: 'feature/dynamic-segments',
+      isGitRepo: true,
+      status: {
+        working: { changed: true, string: '3' },
+        staging: { changed: true, string: '2' }
+      },
+      stashCount: 4
+    },
+    path: {
+      pwd: '/projects/omp-terminal-react-component',
+      Location: 'omp-terminal-react-component'
+    },
+    env: {
+      HOME: '/home/user'
+    },
+    time: {
+      now: new Date()
+    },
+    system: {
+      cpu: {
+        physicalPercentUsed: 22.5,
+        precision: 1
+      },
+      memory: {
+        physicalTotalMemory: 16000000000,
+        physicalFreeMemory: 8000000000
+      }
+    }
+  };
+
+  // Fix TypeScript type compatibility for exampleSegments
+  const exampleSegments: omp.Segment[] = [
+    {
+      type: 'git',
+      foreground: '#ffffff',
+      background: '#007acc',
+      properties: {
+        branch_icon: '\ue725',
+        fetch_status: true,
+        fetch_stash_count: true
+      },
+      style: 'plain' // Ensure style is explicitly defined
+    },
+    {
+      type: 'path',
+      foreground: '#000000',
+      background: '#ffcc00',
+      style: 'diamond',
+      properties: {
+        style: 'folder',
+        max_depth: 3
+      }
+    },
+    {
+      type: 'time',
+      foreground: '#ffffff',
+      background: '#444444',
+      properties: {
+        time_format: '15:04:05'
+      },
+      style: 'plain' // Ensure style is explicitly defined
+    },
+    {
+      type: 'sysinfo',
+      foreground: '#000000',
+      background: '#a3d6e3',
+      properties: {
+        template: '\uf4bc CPU:{{ round .PhysicalPercentUsed .Precision }}% | \uefc5 MEM: {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }} GB'
+      },
+      style: 'plain' // Ensure style is explicitly defined
+    }
+  ];
 
   return (
     <div className="container">
       <h1>OMP Terminal Component Example</h1>
+
+      <h2>Full Terminal Component</h2>
       <Terminal
         prompt={samplePrompt}
         title="Example Terminal"
         os="windows"
       />
+
+      <h2>Dynamic Segment Handlers Demo</h2>
+      <p>This demonstrates the dynamically generated segment handlers processing segments independently from the terminal component.</p>
+
+      <MockProvider mockData={customMockData}>
+        <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '5px', marginTop: '20px' }}>
+          <SegmentExample
+            segments={exampleSegments}
+            style={{ maxWidth: '800px', margin: '0 auto' }}
+          />
+        </div>
+      </MockProvider>
+
+      <div style={{ marginTop: '30px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '5px' }}>
+        <h3>About Dynamic TypeScript Code Generation</h3>
+        <p>
+          This example demonstrates the dynamic TypeScript code generation system that generates segment handlers from the Oh My Posh golang source at build time.
+          The segment handlers process each segment according to its type, applying the same logic as the original Oh My Posh implementation.
+        </p>
+        <p>
+          See <a href="https://github.com/user/repo/blob/main/docs/code-generation.md">documentation</a> for more details on how this works.
+        </p>
+      </div>
     </div>
   );
 };

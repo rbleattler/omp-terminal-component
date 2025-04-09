@@ -1,5 +1,5 @@
 // src/mocks/defaultData.ts
-import { MockData } from "./MockData";
+import { MockData } from "../../.scratch/MockData";
 
 export const defaultMockData: MockData = {
   env: {

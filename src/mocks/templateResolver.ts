@@ -1,5 +1,5 @@
 // src/mocks/templateResolver.ts
-import { MockData } from "./MockData";
+import { MockData } from "../../.scratch/MockData";
 
 export class TemplateResolver {
   private mockData: MockData;
